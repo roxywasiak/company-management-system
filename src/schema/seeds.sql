@@ -18,7 +18,7 @@ INSERT INTO role (title, salary, department_id) VALUES
 ('Operations Manager', 40000.00, 6),
 ('Operations Assistant', 30000.00, 6);
 
--- employee
+
 INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES
 ('Roxy', 'Wasiak', 1, NULL),
 ('Chris', 'Cornell', 2 , 1),
@@ -27,7 +27,7 @@ INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES
 ('Robert', 'Plant', 4, 3),
 ('Lee', 'Perry', 3, 3),
 ('Augustus', 'Pablo', 6, 5),
-('Alice' 'Cooper', 8, 5),
+('Alice', 'Cooper', 8, 5),
 ('Bob', 'Dyaln', 2, 5),
 ('Axel', 'Rose', 9, 5),
 ('Jimmy', 'Page', 3, 3),

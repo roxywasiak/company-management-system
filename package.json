@@ -1,10 +1,29 @@
 {
-  "dependencies": {
+  "name": "company-management-system",
+  "version": "1.0.0",
+  "description": "content managemnet system ",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
     "console.table": "^0.10.0",
     "dotenv": "^16.0.1",
     "inquirer": "^9.0.0",
     "mysql2": "^2.3.3",
     "nodemon": "^2.0.18",
     "sequelize": "^6.21.0"
-  }
+  },
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/roxywasiak/company-management-system.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/roxywasiak/company-management-system/issues"
+  },
+  "homepage": "https://github.com/roxywasiak/company-management-system#readme"
 }

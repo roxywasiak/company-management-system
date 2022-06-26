@@ -1,3 +1,3 @@
 # company-management-system
 
-view and manage the departments, roles, and employees in my company to organize a business
+View, manage the departments, roles, and employees in my company to organize a business
