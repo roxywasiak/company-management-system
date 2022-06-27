@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "content managemnet system ",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "console-table-printer": "^2.11.0"
+  },
   "devDependencies": {
     "console.table": "^0.10.0",
     "dotenv": "^16.0.1",

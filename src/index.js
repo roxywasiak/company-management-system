@@ -1,4 +1,8 @@
+const inquirer = require("inquirer");
+const  = require("")
 // init function
+
+//promise resolve reject
 
 // go through questions
 
@@ -6,3 +10,4 @@
 // progress false
 
 //call the init()
+init();

@@ -1,18 +1,24 @@
-require("dotenv").config();
+//import mysql2
+const mysql = require("mysql2");
+const { printTable } = require("console-table-printer");
 
-const { Sequelize } = require("sequelize");
-
-const DB_HOST = process.env.DB_HOST;
-const DB_NAME = process.env.DB_NAME;
-const DB_USER = process.env.DB_USER;
-const DB_PASSWORD = process.env.DB_PASSWORD;
-
-const options = {
-  host: DB_HOST,
-  dialect: "mysql",
-  port: 3306,
+const dbOptions = {
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "root",
+  password: process.env.DB_PASSWORD || "password",
+  database: process.env.DB_NAME || "company_db",
 };
 
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, options);
+module.exports = {
+  dbOptions,
+};
+//create connection using method
+const db = mysql.createConnection(dbOptions);
 
-module.exports = sequelize;
+//query the db
+db.query("SELECT * FROM department", function (err, results) {
+  if (err) {
+    console.log(err);
+  }
+  console.log(results);
+});
