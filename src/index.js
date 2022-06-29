@@ -119,6 +119,7 @@ const init = async () => {
           };
         });
       };
+      //departments
       const departments = await db.query(`
       SELECT * FROM department`);
       //questions
@@ -149,18 +150,34 @@ const init = async () => {
         `INSERT INTO role (title, salary, department_id) VALUES("${title}", ${salary}, ${department_id})`
       );
     }
+    if (userChoice === "viewDepartments") {
+      const departments = await db.query(`SELECT * FROM department`);
+      console.table(departments);
+    }
+    //addDepartments
+    if (userChoice === "addDepartment") {
+      const departmentQuestions = [
+        {
+          type: "input",
+          message: "Please enter the new department:",
+          name: "newDepartment",
+        },
+      ];
+      //queries
+      const { newDepartment } = await inquirer.prompt(departmentQuestions);
+      await db.query(
+        `INSERT INTO department (name) VALUES("${newDepartment}")`
+      );
+      console.log(`You have added ${newDepartment} to the system`);
+    }
+    //exit
+    if (userChoice === "exit") {
+      //set progress false so it stops/exit
+      inProgress = false;
+      // process.exit()check suraj code
+      process.exit;
+    }
   }
 };
-
-//departments
-//questions
-//queries
-
-//addDepartments
-//queries
-
-//exit
-//set progress false so it stops/exit
-// process.exit()check suraj code
-
-//call the init function do not forget otherwise it doesn't work
+//call the init function
+init();
