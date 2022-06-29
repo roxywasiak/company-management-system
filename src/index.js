@@ -109,12 +109,48 @@ const init = async () => {
       );
       console.log(`Employee Role has been updated`);
     }
+    //roles
+    if (userChoice === "addRoles") {
+      const showDepartmentChoices = (departmentsFromDB) => {
+        return showDepartmentChoices.map((department) => {
+          return {
+            name: department.name,
+            value: department.id,
+          };
+        });
+      };
+      const departments = await db.query(`
+      SELECT * FROM department`);
+      //questions
+      const roleQuestions = [
+        {
+          type: "list",
+          message: "Please select a department:",
+          name: "department_id",
+          choices: showDepartmentChoices(departments),
+        },
+        {
+          type: "input",
+          message: "Please enter role title:",
+          name: "title",
+        },
+        {
+          type: "input",
+          message: "Please enter role salary:",
+          name: "salary",
+        },
+      ];
+
+      const { department_id, title, salary } = await inquirer.prompt(
+        roleQuestions
+      );
+      //queries
+      await db.query(
+        `INSERT INTO role (title, salary, department_id) VALUES("${title}", ${salary}, ${department_id})`
+      );
+    }
   }
 };
-
-//roles
-//questions
-//queries
 
 //departments
 //questions
