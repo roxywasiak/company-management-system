@@ -5,6 +5,7 @@ const {
   showDepartmentChoices,
   showManagerChoices,
   showEmployeeChoices,
+  showRoleChoices,
 } = require("./utils/utils");
 
 //get the db
@@ -33,11 +34,15 @@ const init = async () => {
     const { userChoice } = await inquirer.prompt(questions);
     //go through your questions js file and follow this route using the if statements
     if (userChoice === "viewEmployee") {
-      const employees = await db.query(
-        `SELECT CONCAT (emp.first_name, '' , emp.last_name) AS 'USER' , job.title, dept.name, job.salary,
-        CONCAT (m.first_name, '' , m.last_name) AS MANAGER 
-        FROM employee AS emp JOIN employee AS m ON emp.manager_id = m.id INNER JOIN role job ON role emp.role_id = job.id LEFT JOIN department ON job.department_id;`
-      );
+      const employees = await db.query(`SELECT CONCAT(E.FIRST_NAME,' ',
+      E.LAST_NAME) AS USER,
+      R.SALARY, R.TITLE,
+      D.ID,
+     CONCAT( M.FIRST_NAME,' ',
+      M.LAST_NAME) AS MANAGER
+FROM EMPLOYEE AS E
+ JOIN EMPLOYEE AS M 
+ ON E.MANAGER_ID = M.ID INNER JOIN ROLE R ON E.ROLE_ID = R.ID LEFT JOIN DEPARTMENT D ON R.DEPARTMENT_ID = D.ID`);
       console.table(employees);
     }
     //add employees
@@ -50,34 +55,34 @@ const init = async () => {
         {
           type: "input",
           message: "Please enter employee's first name:",
-          name: "firstName",
+          name: "first_name",
         },
         {
           type: "input",
           message: "Please enter employee's last name:",
-          name: "lastName",
+          name: "last_name",
         },
         {
           type: "list",
           message: "Please select a role:",
           name: "role_id",
-          choices: generateRoleChoices(role),
+          choices: showRoleChoices(role),
         },
         {
           type: "list",
           message: "Please select a Manager:",
           name: "manager_id",
-          choices: generateManagerChoices(employee),
+          choices: showManagerChoices(employee),
         },
       ];
 
-      const { role_id, firstName, lastName, manager_id } =
+      const { role_id, first_name, last_name, manager_id } =
         await inquirer.prompt(employeeQuestions);
 
       await db.query(
-        `INSERT INTO employee (firstName, lastName, role_id, manager_id) VALUES("${firstName}", "${lastName}", ${role_id}, ${manager_id})`
+        `INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES("${first_name}", "${last_name}", ${role_id}, ${manager_id})`
       );
-      console.log(`You have added ${firstName} ${lastName} to the system`);
+      console.log(`You have added ${first_name} ${last_name} to the system`);
     }
 
     //update employee
@@ -91,14 +96,14 @@ const init = async () => {
           type: "list",
           message: "Which employee would you like to update?",
           name: "id",
-          choices: generateEmployeeChoices(employee),
+          choices: showEmployeeChoices(employee),
         },
         {
           type: "list",
           message:
             "What role would you like to assign to the selected employee?",
           name: "role_id",
-          choices: generateRoleChoices(role),
+          choices: showRoleChoices(role),
         },
       ];
       const { id, role_id } = await inquirer.prompt(updateEmployeeQuestions);
@@ -110,14 +115,6 @@ const init = async () => {
     }
     //roles
     if (userChoice === "addRoles") {
-      const showDepartmentChoices = (departmentsFromDB) => {
-        return showDepartmentChoices.map((department) => {
-          return {
-            name: department.name,
-            value: department.id,
-          };
-        });
-      };
       //departments
       const departments = await db.query(`
       SELECT * FROM department`);
@@ -170,11 +167,12 @@ const init = async () => {
       console.log(`You have added ${newDepartment} to the system`);
     }
     //exit
+    console.log(userChoice);
     if (userChoice === "exit") {
       //set progress false so it stops/exit
       inProgress = false;
       // process.exit()check suraj code
-      process.exit;
+      process.exit(0);
     }
   }
 };

@@ -8,9 +8,15 @@ SELECT * FROM role;
 
 SELECT role.title, department.name, role.salary FROM role JOIN department ON role.department_id = department.id ORDER BY department.name;
 
-SELECT CONCAT (emp.first_name, '' , emp.last_name) AS 'USER' , job.title, dept.name, job.salary,
- CONCAT (m.first_name, '' , m.last_name) AS MANAGER 
- FROM employee AS emp JOIN employee AS m ON emp.manager_id = m.id INNER JOIN role job ON role emp.role_id = job.id LEFT JOIN department ON job.department_id;
+SELECT CONCAT(E.FIRST_NAME,' ',
+       E.LAST_NAME) AS USER,
+       R.SALARY, R.TITLE,
+       D.ID,
+      CONCAT( M.FIRST_NAME,' ',
+       M.LAST_NAME) AS MANAGER
+FROM EMPLOYEE AS E
+  JOIN EMPLOYEE AS M 
+  ON E.MANAGER_ID = M.ID INNER JOIN ROLE R ON E.ROLE_ID = R.ID LEFT JOIN DEPARTMENT D ON R.DEPARTMENT_ID = D.ID;
 
 INSERT INTO employee (firstName, lastName, role_id, manager_id) VALUES("${firstName}", "${lastName}", ${role_id}, ${manager_id})
 

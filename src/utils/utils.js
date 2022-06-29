@@ -27,7 +27,7 @@ const showRoleChoices = (rolesFromDB) => {
 const showManagerChoices = (managersFromDB) => {
   return managersFromDB.map((manager) => {
     return {
-      name: manager.firstName + " " + manager.lastName,
+      name: manager.first_name + " " + manager.last_name,
       value: manager.id,
     };
   });
@@ -37,7 +37,7 @@ const showManagerChoices = (managersFromDB) => {
 const showEmployeeChoices = (employeeFromDB) => {
   return employeeFromDB.map((employee) => {
     return {
-      name: employee.firstName + " " + employee.lastName,
+      name: employee.first_name + " " + employee.last_name,
       value: employee.id,
     };
   });
