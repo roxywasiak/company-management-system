@@ -17,7 +17,7 @@ const showEmployeeChoices = (employeeFromDB) => {
   return;
 };
 
-// export the functions
+// export the functions to index.js
 module.exports = {
   showDepartmentChoices,
   showRoleChoices,

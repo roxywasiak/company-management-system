@@ -1,7 +1,7 @@
 {
   "name": "company-management-system",
   "version": "1.0.0",
-  "description": "content managemnet system ",
+  "description": "content management system ",
   "main": "index.js",
   "dependencies": {
     "console-table-printer": "^2.11.0"
@@ -15,7 +15,7 @@
     "sequelize": "^6.21.0"
   },
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node src index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
