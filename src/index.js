@@ -1,4 +1,5 @@
 const inquirer = require("inquirer");
+const { printTable } = require("console-table-printer");
 const {
   showDepartmentChoices,
   showRoleChoices,
@@ -35,7 +36,7 @@ const {
 //questions
 //queries
 
-//adddepartments
+//addDepartments
 //queries
 
 //exit

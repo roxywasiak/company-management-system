@@ -1,6 +1,5 @@
 //import mysql2
 const mysql = require("mysql2");
-const { printTable } = require("console-table-printer");
 
 const dbOptions = {
   host: process.env.DB_HOST || "localhost",

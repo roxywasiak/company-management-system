@@ -1,7 +1,5 @@
 const mysql = require("mysql");
 
-const mysql = require("mysql2");
-
 class Db {
   constructor(dbOptions) {
     this.dbOptions = dbOptions;
@@ -49,14 +47,3 @@ class Db {
 }
 
 module.exports = Db;
-
-// init function
-
-//promise resolve reject
-
-// go through questions
-
-// quit
-// progress false
-
-//call the init()
