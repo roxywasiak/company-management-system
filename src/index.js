@@ -34,10 +34,9 @@ const init = async () => {
     //go through your questions js file and follow this route using the if statements
     if (userChoice === "viewEmployee") {
       const employees = await db.query(
-        `                                   
-             SELECT CONCAT (emp.first_name, '' , emp.last_name) AS 'USER' , job.title, dept.name, job.salary,
-              CONCAT (m.first_name, '' , m.last_name) AS MANAGER 
-              FROM employee AS emp JOIN employee AS m ON emp.manager_id = m.id INNER JOIN role job ON role emp.role_id = job.id LEFT JOIN department ON job.department_id;`
+        `SELECT CONCAT (emp.first_name, '' , emp.last_name) AS 'USER' , job.title, dept.name, job.salary,
+        CONCAT (m.first_name, '' , m.last_name) AS MANAGER 
+        FROM employee AS emp JOIN employee AS m ON emp.manager_id = m.id INNER JOIN role job ON role emp.role_id = job.id LEFT JOIN department ON job.department_id;`
       );
       console.table(employees);
     }

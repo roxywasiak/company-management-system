@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 
 class Db {
   constructor(dbOptions) {
@@ -6,7 +6,7 @@ class Db {
     this.connection = mysql.createConnection(dbOptions);
   }
 
-  start() {
+  init() {
     return new Promise((resolve, reject) => {
       const onConnect = (err) => {
         if (err) {
