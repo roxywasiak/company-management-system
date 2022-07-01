@@ -20,9 +20,17 @@ npm run start
 
 ## Screenshots 📸
 
-![input] ()
+All employees table
 
-## Video link to project
+![screenshot](./src/images/all.png)
+
+All departments table
+
+![screenshot](./src/images/dept.png)
+
+## Video link to project 📽
+
+Watch the video walk-through of the application [CLICK](https://drive.google.com/file/d/1yyTkVKlGDMZQSo2qNu-Y8wVQpyqYChON/view?usp=sharing)
 
 # Contact Me 👋
 

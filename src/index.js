@@ -167,7 +167,6 @@ FROM EMPLOYEE AS E
       console.log(`You have added ${newDepartment} to the system`);
     }
     //exit
-    console.log(userChoice);
     if (userChoice === "exit") {
       //set progress false so it stops/exit
       inProgress = false;
