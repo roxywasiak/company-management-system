@@ -30,7 +30,7 @@ All departments table
 
 ## Video link to project 📽
 
-Watch the video walk-through of the application [CLICK](https://drive.google.com/file/d/1yyTkVKlGDMZQSo2qNu-Y8wVQpyqYChON/view?usp=sharing)
+Watch the video walk-through of the application [CLICK](https://drive.google.com/file/d/1qXDFZP5bMONKTPOXzit2SbyaRUY2zzgD/view?usp=sharing)
 
 # Contact Me 👋
 
