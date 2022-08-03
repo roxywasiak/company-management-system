@@ -5,7 +5,7 @@ const showDepartmentChoices = (departmentsFromDB) => {
     //return object key:value
     return {
       //key would be the name of dept and value is the id
-      name: department.dept_name,
+      name: department.dept.name,
       value: department.id,
     };
   });
